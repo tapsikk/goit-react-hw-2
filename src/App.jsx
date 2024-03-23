@@ -1,14 +1,13 @@
 // import Profile from './components/Profile/Profile';
+import Description from "./components/description/Description";
 
-
-function App() {
-  const {} = ;
+const App = () => {
   return (
-    <>
-     
-      {/* <FriendList friends={friend} /> */}
-    </>
-  );
+
+   <Description />
+   
+  )
 }
+
 
 export default App;
