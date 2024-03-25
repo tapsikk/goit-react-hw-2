@@ -1,10 +1,10 @@
-const Feedback = ({valueG, valueN, valueB}) =>{
+const Feedback = ({ marks }) => {
   return (
-      <div>
-          <p>Good: {valueG}</p>
-          <p>Neutral: {valueN}</p>
-          <p>Bad: {valueB}</p>
-      </div>
-  )
-}
+    <div>
+      <p>Good: {marks.good}</p>
+      <p>Neutral: {marks.neutral}</p>
+      <p>Bad: {marks.bad}</p>
+    </div>
+  );
+};
 export default Feedback;
