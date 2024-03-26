@@ -7,6 +7,6 @@ const Description = () => {
         options below.
       </p>
     </div>
-  )
-}
+  );
+};
 export default Description;
