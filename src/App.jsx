@@ -15,10 +15,17 @@ const App = () => {
       [feedbackType]: feedbacks[feedbackType] + 1,
     });
   };
+  const resetFeedbacks = () => {
+    setFeedbacks({
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    });
+  };
   return (
     <>
       <Description />
-      <Options updateF={updateFeedback} />
+      <Options updateF={updateFeedback} resetFeedbacks={resetFeedbacks}/>
       { /* зменшити при тотал */}
       {( feedbacks.good || feedbacks.neutral || feedbacks.bad) ?  <Feedback
         marks={feedbacks}
