@@ -13,18 +13,9 @@ const App = () => {
     }
   );
 
-  const [total, setTotal] = useState(0);
-  const [positive, setPositive] = useState(0);
-
   useEffect(() => {
-    setTotal(feedbacks.good + feedbacks.neutral + feedbacks.bad);
     localStorage.setItem("marks", JSON.stringify(feedbacks));
   }, [feedbacks]);
-
-  useEffect(() => {
-    // формулу зробив як на вiдео, в теорiї була iнша :)
-    if (total) setPositive(Math.round((feedbacks.good / total) * 100));
-  }, [total]);
 
   const updateFeedback = (feedbackType) => {
     setFeedbacks({
@@ -44,13 +35,12 @@ const App = () => {
     <>
       <Description />
       <Options
+        isVisible={feedbacks.good || feedbacks.neutral || feedbacks.bad}
         updateF={updateFeedback}
-        total={total}
         resetFeedbacks={resetFeedbacks}
       />
-      {/* зменшити при тотал */}
-      {total ? (
-        <Feedback marks={feedbacks} total={total} positive={positive} />
+      {(feedbacks.good || feedbacks.neutral || feedbacks.bad) ? (
+        <Feedback marks={feedbacks} />
       ) : (
         <Notification />
       )}
