@@ -1,6 +1,7 @@
 const Feedback = ({ marks }) => {
   const total = marks.good + marks.neutral + marks.bad;
-  const positive = Math.round((marks.good / total) * 100)
+  // формулу зробив як на вiдео, в теорiї була iнша :)
+  const positive = Math.round(((marks.good + marks.neutral) / total) * 100)
   return (
     <div>
       <p>Good: {marks.good}</p>

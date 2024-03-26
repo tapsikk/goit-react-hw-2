@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Description from "./components/description/Description";
 import Feedback from "./components/Feedback/Feedback";
 import Options from "./components/Options/Options";
 
 const App = () => {
-  const [feedbacks, setFeedbacks] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  });
+  const [feedbacks, setFeedbacks] = useState(
+    JSON.parse(localStorage.getItem("marks")) || {
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    }
+  );
+
+  useEffect(() => {
+    localStorage.setItem("marks", JSON.stringify(feedbacks));
+  }, [feedbacks]);
+
   const updateFeedback = (feedbackType) => {
     setFeedbacks({
       ...feedbacks,
@@ -22,6 +29,7 @@ const App = () => {
       bad: 0,
     });
   };
+
   return (
     <>
       <Description />
