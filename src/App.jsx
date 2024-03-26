@@ -30,18 +30,21 @@ const App = () => {
       bad: 0,
     });
   };
-const total = feedbacks.good + feedbacks.neutral + feedbacks.bad;
+  const total = feedbacks.good + feedbacks.neutral + feedbacks.bad;
+  const positivePercentage = total > 0 ? Math.round((feedbacks.good / total) * 100) : 0;
   return (
     <>
       <Description />
       <Options
-        isVisible={feedbacks.good || feedbacks.neutral || feedbacks.bad}
+        isVisible={total > 0}
         updateF={updateFeedback}
         resetFeedbacks={resetFeedbacks}
       />
-      {(feedbacks.good || feedbacks.neutral || feedbacks.bad) ? (
-        <Feedback marks={feedbacks} total={total}
-        postive={Math.round((feedbacks.good / total) * 100)}
+      {total > 0 ? (
+        <Feedback
+          marks={feedbacks}
+          total={total}
+          postive={positivePercentage}
         />
       ) : (
         <Notification />
