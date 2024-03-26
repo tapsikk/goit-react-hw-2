@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import Description from "./components/description/Description";
+import Description from "./components/Description/Description";
 import Feedback from "./components/Feedback/Feedback";
 import Options from "./components/Options/Options";
+import Notification from "./components/Notification/Notification";
 
 const App = () => {
   const [feedbacks, setFeedbacks] = useState(
@@ -24,7 +25,7 @@ const App = () => {
   useEffect(() => {
     // формулу зробив як на вiдео, в теорiї була iнша :)
     if (total)
-    setPositive(Math.round(((feedbacks.good + feedbacks.neutral) / total) * 100));
+    setPositive(Math.round(((feedbacks.good) / total) * 100));
   }, [total]);
 
   const updateFeedback = (feedbackType) => {
@@ -44,12 +45,12 @@ const App = () => {
   return (
     <>
       <Description />
-      <Options updateF={updateFeedback} resetFeedbacks={resetFeedbacks} />
+      <Options updateF={updateFeedback} total={total} resetFeedbacks={resetFeedbacks} />
       {/* зменшити при тотал */}
       {total ? (
         <Feedback marks={feedbacks} total={total} positive={positive} />
       ) : (
-        <p>No feedback yet</p>
+        <Notification />
       )}
     </>
   );
