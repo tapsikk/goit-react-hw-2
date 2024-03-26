@@ -25,12 +25,13 @@ const App = () => {
   return (
     <>
       <Description />
-      <Options updateF={updateFeedback} resetFeedbacks={resetFeedbacks}/>
-      { /* зменшити при тотал */}
-      {( feedbacks.good || feedbacks.neutral || feedbacks.bad) ?  <Feedback
-        marks={feedbacks}
-      /> : <p>No feedback yet</p>
-}
+      <Options updateF={updateFeedback} resetFeedbacks={resetFeedbacks} />
+      {/* зменшити при тотал */}
+      {feedbacks.good || feedbacks.neutral || feedbacks.bad ? (
+        <Feedback marks={feedbacks} />
+      ) : (
+        <p>No feedback yet</p>
+      )}
     </>
   );
 };
