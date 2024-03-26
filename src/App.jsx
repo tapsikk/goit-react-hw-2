@@ -18,7 +18,6 @@ const App = () => {
 
   useEffect(() => {
     setTotal(feedbacks.good + feedbacks.neutral + feedbacks.bad);
-    // формулу зробив як на вiдео, в теорiї була iнша :)
     localStorage.setItem("marks", JSON.stringify(feedbacks));
   }, [feedbacks]);
 
