@@ -53,4 +53,4 @@ import Options from "./components/Options/Options";
 //   );
 // };
 
-// export default App;
+export default App;
