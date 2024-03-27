@@ -44,7 +44,7 @@ const App = () => {
         <Feedback
           marks={feedbacks}
           total={total}
-          postive={positivePercentage}
+          positive={positivePercentage}
         />
       ) : (
         <Notification />
